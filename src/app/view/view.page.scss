@@ -1,0 +1,49 @@
+#logo {
+    margin: 6%;
+  }
+
+#buttonHelp {
+    text-align: right;
+    align-items: right;
+    margin: 4%;
+}
+
+ion-icon {
+    font-size: 30px;
+}
+
+table {
+    width:100%; 
+    weight:100%; 
+    margin: 0%;
+   // border: 1px solid
+}
+
+#tittle {
+    font-size: 24px;
+    text-align: center;
+    font-style: bold;
+}
+
+.buttonOptions{
+    display: flex;
+    margin: 10px;
+    width: 90%;
+    weight: 30px;
+    border-radius: 0px;
+}
+
+ion-tab-button {
+    --color: var(--ion-color-medium);
+    --color-selected: var(--ion-color-secondary);
+  
+    &::before {
+      background-color: transparent;
+      display: block;
+      content: "";
+      margin: 0 auto;
+      width: 20px;
+      height: 2px;
+    }
+}
+  

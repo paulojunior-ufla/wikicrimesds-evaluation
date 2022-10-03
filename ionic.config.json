@@ -1,0 +1,7 @@
+{
+  "name": "appWikiCrimesDS",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

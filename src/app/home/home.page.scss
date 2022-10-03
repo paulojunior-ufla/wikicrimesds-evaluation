@@ -1,0 +1,36 @@
+#container {
+  text-align: justify;
+  margin: 20px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 70%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#buttonStart {
+  text-align: center;
+  align-items: center;
+  margin-top: 20%;
+}
+
+#tittle {
+  text-align: center;
+  align-items: center;
+  margin-top: 2%;
+  font-size: 45px;
+  font-weight: bold;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+ion-content {
+  --background: url('../../assets/fundo.jpg') no-repeat center center / cover;
+}
+
+#logo{
+  text-align:center;
+  margin-top: 60px;
+  align-items: center;
+}

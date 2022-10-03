@@ -1,0 +1,54 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+<br>
+<ion-list>
+    <ion-item>
+        <ion-label>Ano: </ion-label>
+        <ion-select placeholder="" [(ngModel)]="year" (ionChange)="getMap(year)">
+          <ion-select-option>2012</ion-select-option>
+          <ion-select-option>2013</ion-select-option>
+          <ion-select-option>2014</ion-select-option>
+          <ion-select-option>2015</ion-select-option>
+          <ion-select-option>2016</ion-select-option>
+          <ion-select-option>2017</ion-select-option>
+          <ion-select-option>2018</ion-select-option>
+          <ion-select-option>2019</ion-select-option>
+        </ion-select>
+    </ion-item>
+    <br><br><br>
+</ion-list>
+
+
+    <table>
+        <tr>
+            <td>
+                <div id="map" style="background-image: url('assets/{{nameImage}}')">
+                    <ion-label *ngIf="year == ''" >Selecione um ano</ion-label>
+                    <ion-icon *ngIf="year > 0" id="pin" style="cursor:pointer" name="pin-sharp"></ion-icon>
+                </div>
+            </td>
+            <td>
+                <div *ngIf="year > 0" id="legend" style="background-image: url('assets/{{nameLegend}}');"></div>
+            </td>
+        </tr>
+    </table>
+    
+    <br><br><br><br>
+    <table *ngIf="year > 0">
+        <tr>
+            <td id="arrow">
+                <ion-icon name="caret-back-outline" (ionKnobMoveEnd)="getValueMounth($event)"></ion-icon>
+            </td>
+            <td>
+                <ion-range [ticks]="true" [snaps]="true" [min]="1" [max]="12" (ionKnobMoveEnd)="getValueMounth($event)" [(ngModel)]="mounth"></ion-range>
+                <ion-label> {{ nameMounth }}</ion-label>
+            </td>
+            <td id="arrow">
+                <ion-icon name="caret-forward-outline" (click)="getValueMounth($event)"></ion-icon>
+            </td>
+        </tr>
+   
+</table>
+</ion-content>
