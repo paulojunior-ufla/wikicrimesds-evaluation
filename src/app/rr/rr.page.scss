@@ -1,12 +1,12 @@
   #map {
-    //border: 2px solid yellow;
+    border: 2px solid yellow;
     width: 300px;
-    weight: 300px;
+    weight: 150px;
     text-align: center;
     align-items: center;
     background-size: 100%;
-    padding-bottom: 210px;
-    background-repeat: no-repeat;
+    padding-bottom: 20px;
+   //background-repeat: no-repeat;
   }
 
   #legend {
@@ -16,7 +16,7 @@
     text-align: right;
     align-items: right;
     background-size: 100%;
-    padding-bottom: 130px;
+    padding-bottom: 200px;
     background-repeat: no-repeat;
   }
 
@@ -69,14 +69,22 @@
     text-align: center;
   }
   
-  table {
+  #range {
     width: 100%; 
-    weigth:20%;
+    weigth: 20%;
     align-items: center;
     text-align: center;
    // border: 1px solid;
   }
  
-  #pin {
-    font-size: 30px;
+  .pin {
+    font-size: 24px;
+  }
+
+  #table_pins{
+    width: 240px; 
+    margin-left: 20px; 
+    margin-top: 2px; 
+    weight: 300px; 
+    //border: 1px solid blue;"
   }

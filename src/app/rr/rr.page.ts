@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RangeValue } from '@ionic/core';
-import { RangeCustomEvent } from '@ionic/angular';
+import { AlertController, RangeCustomEvent } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { DataService, Data } from '../services/data.service';
 
 @Component({
   selector: 'app-rr',
@@ -9,46 +10,49 @@ import { Router } from '@angular/router';
   styleUrls: ['./rr.page.scss'],
 })
 export class RrPage implements OnInit {
-  valueMounth: RangeValue;
-  nameMounth: string = "Janeiro";
-  mounth: string = "1";
-  nameImage = "imgStart.png";
-  year: string = "";
-  nameLegend = "imgStart.png";
+  monthValue: RangeValue;
+  monthName: string = "Janeiro";
+  month: number = 1;
+  imageName = "imgStart.png";
+  year: number = 0;
+  legendImage = "imgStart.png";
+  arrayData: Data[] = [];
 
   constructor(
-    private router: Router
+    private router: Router,
+    private dataService: DataService,
+    private alertController: AlertController
   ) { }
 
-  getValueMounth(ev: Event) {
-    this.valueMounth = (ev as RangeCustomEvent).detail.value;
-    this.mounth = this.valueMounth.toString();
+  getMonthValue(ev: Event) {
+    this.monthValue = (ev as RangeCustomEvent).detail.value;
+    this.month = parseInt(this.monthValue.toString());
     this.getMap(this.year);
 
-    if(this.valueMounth == 1){
-      this.nameMounth = "Janeiro";
-    }else if(this.valueMounth == 2){
-      this.nameMounth = "Fevereiro";
-    }else if(this.valueMounth == 3){
-      this.nameMounth = "Março";
-    }else if(this.valueMounth == 4){
-      this.nameMounth = "Abril";
-    }else if(this.valueMounth == 5){
-      this.nameMounth = "Maio";
-    }else if(this.valueMounth == 6){
-      this.nameMounth = "Junho";
-    }else if(this.valueMounth == 7){
-      this.nameMounth = "Julho";
-    }else if(this.valueMounth == 8){
-      this.nameMounth = "Agosto";
-    }else if(this.valueMounth == 9){
-      this.nameMounth = "Setembro";
-    }else if(this.valueMounth == 10){
-      this.nameMounth = "Outubro";
-    }else if(this.valueMounth == 11){
-      this.nameMounth = "Novembro";
-    }else if(this.valueMounth == 12){
-      this.nameMounth = "Dezembro";
+    if(this.monthValue == 1){
+      this.monthName= "Janeiro";
+    }else if(this.monthValue == 2){
+      this.monthName = "Fevereiro";
+    }else if(this.monthValue == 3){
+      this.monthName = "Março";
+    }else if(this.monthValue == 4){
+      this.monthName = "Abril";
+    }else if(this.monthValue == 5){
+      this.monthName = "Maio";
+    }else if(this.monthValue == 6){
+      this.monthName = "Junho";
+    }else if(this.monthValue == 7){
+      this.monthName = "Julho";
+    }else if(this.monthValue == 8){
+      this.monthName = "Agosto";
+    }else if(this.monthValue == 9){
+      this.monthName = "Setembro";
+    }else if(this.monthValue == 10){
+      this.monthName = "Outubro";
+    }else if(this.monthValue == 11){
+      this.monthName = "Novembro";
+    }else if(this.monthValue == 12){
+      this.monthName = "Dezembro";
     }
   }
 
@@ -57,15 +61,47 @@ export class RrPage implements OnInit {
 
   getMap(year){
     this.year = year;
-    this.nameImage = "rr/"+ this.year + "/" + this.mounth +"-"+ year+".png";
-    this.nameLegend = "rr/"+ this.year + "/" + "legend.png";
+    this.imageName = "rr/"+ this.year + "/" + this.month +"-"+ year+".png";
+    this.legendImage = "rr/"+ this.year + "/" + "legend.png";
   }
 
-  backMounth(){
-    console.log(this.mounth);
+  backMonth(){
+    console.log(this.month);
   }
 
-  nextMouth(){
-    console.log(this.mounth);
+  nextMoth(){
+    console.log(this.month);
+  }
+
+  async getArrayData(year){
+    await this.dataService.getData(year).subscribe(res => {
+      this.arrayData = res;
+    }); 
+  }
+
+  getData(n){
+    //console.log(this.arrayData);
+    //console.log(this.year + "/" + this.month + "-" + n);
+    for (let l of this.arrayData) {
+      if((l.name == n) && (l.year == this.year) && (l.month  = this.month)){
+       // console.log(l)
+        var header = l.name;
+        var msg = " Período: "+ this.monthName + "/" + this.year + "<br>" +
+       " Crimes: "+ l.crimes + "<br>" +
+        " População: "+ l.population + "<br>" +
+        " RR: "+ l.rr + "<br>";
+        this.showAlert(header, msg)
+      }
+    }
+   
+  }
+
+  async showAlert(header, message) {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: ['OK'],
+    });
+    await alert.present();
   }
 }
