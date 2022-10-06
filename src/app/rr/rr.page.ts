@@ -17,6 +17,12 @@ export class RrPage implements OnInit {
   year: number = 0;
   legendImage = "imgStart.png";
   arrayData: Data[] = [];
+  regions: string[] = [
+    "Curitiba", "São José dos Pihais", "Paranaguá", "Ponta Grossa", "São Mateus do Sul", "União da Vitória",
+    "Guarapuava", "Laranjeiras do Sul", "Pato Branco", "Francisco Beltrão", "Cascavel", "Foz do Iguaçu", 
+    "Toledo", "Campo Mourão", "Umuarama", "Paranavaí", "Maringá", "Apucarana", "Rolândia", "Londrina", 
+    "Cornélio Procópio", "Telêmaco Borba","Jacarezinho"
+  ]
 
   constructor(
     private router: Router,
@@ -74,26 +80,22 @@ export class RrPage implements OnInit {
   }
 
   async getArrayData(year){
-    await this.dataService.getData(year).subscribe(res => {
+    this.dataService.getData(year).subscribe(res => {
       this.arrayData = res;
     }); 
   }
 
   getData(n){
-    //console.log(this.arrayData);
-    //console.log(this.year + "/" + this.month + "-" + n);
     for (let l of this.arrayData) {
       if((l.name == n) && (l.year == this.year) && (l.month  = this.month)){
-       // console.log(l)
-        var header = l.name;
-        var msg = " Período: "+ this.monthName + "/" + this.year + "<br>" +
+        let header = this.regions[parseInt(l.name) - 1];
+        let msg = " Período: "+ this.monthName + "/" + this.year + "<br>" +
        " Crimes: "+ l.crimes + "<br>" +
         " População: "+ l.population + "<br>" +
         " RR: "+ l.rr + "<br>";
         this.showAlert(header, msg)
       }
     }
-   
   }
 
   async showAlert(header, message) {
