@@ -86,9 +86,10 @@ export class RrPage implements OnInit {
   }
 
   getData(n){
+    console.log(this.regions[n - 1])
     for (let l of this.arrayData) {
       if((l.name == n) && (l.year == this.year) && (l.month  = this.month)){
-        let header = this.regions[parseInt(l.name) - 1];
+        let header = this.regions[n - 1];
         let msg = " Período: "+ this.monthName + "/" + this.year + "<br>" +
        " Crimes: "+ l.crimes + "<br>" +
         " População: "+ l.population + "<br>" +
