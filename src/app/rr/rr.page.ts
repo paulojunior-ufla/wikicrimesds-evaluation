@@ -87,7 +87,7 @@ export class RrPage implements OnInit {
 
   getData(n){
     for (let l of this.arrayData) {
-      if((l.name == n) && (l.year == this.year) && (l.month  = this.month)){
+      if((l.name == n) && (l.year == this.year) && (l.month  == this.month)){
         let header =  n + "° AISP";
         let msg = this.regions[n - 1] +
         "<br>" + " Período: "+ this.monthName + "/" + this.year + "<br>" +

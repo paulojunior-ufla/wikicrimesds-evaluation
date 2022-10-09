@@ -86,11 +86,12 @@ export class SirPage implements OnInit {
   }
 
   getData(n){
-    console.log(this.regions[n - 1])
+    console.log(n)
     for (let l of this.arrayData) {
-      if((l.name == n) && (l.year == this.year) && (l.month  = this.month)){
-        let header = this.regions[n - 1];
-        let msg = " Período: "+ this.monthName + "/" + this.year + "<br>" +
+      if((l.name == n) && (l.year == this.year) && (l.month  == this.month)){
+        let header =  n + "° AISP";
+        let msg = this.regions[n - 1] +
+        "<br>" + " Período: "+ this.monthName + "/" + this.year + "<br>" +
        " Crimes: "+ l.crimes + "<br>" +
         " População: "+ l.population + "<br>" +
         " SIR: "+ l.sir + "<br>";
@@ -102,8 +103,14 @@ export class SirPage implements OnInit {
   async showAlert(header, message) {
     const alert = await this.alertController.create({
       header,
+      cssClass: 'custom-alert',
       message,
-      buttons: ['OK'],
+      buttons: [
+        {
+         text: 'OK',
+          cssClass: 'alert-button-confirm'
+        }
+       ]
     });
     await alert.present();
   }
