@@ -86,11 +86,11 @@ export class RrPage implements OnInit {
   }
 
   getData(n){
-    console.log(this.regions[n - 1])
     for (let l of this.arrayData) {
       if((l.name == n) && (l.year == this.year) && (l.month  = this.month)){
-        let header = this.regions[n - 1];
-        let msg = " Período: "+ this.monthName + "/" + this.year + "<br>" +
+        let header =  n + "° AISP";
+        let msg = this.regions[n - 1] +
+        "<br>" + " Período: "+ this.monthName + "/" + this.year + "<br>" +
        " Crimes: "+ l.crimes + "<br>" +
         " População: "+ l.population + "<br>" +
         " RR: "+ l.rr + "<br>";
@@ -102,8 +102,14 @@ export class RrPage implements OnInit {
   async showAlert(header, message) {
     const alert = await this.alertController.create({
       header,
+      cssClass: 'custom-alert',
       message,
-      buttons: ['OK'],
+      buttons: [
+        {
+         text: 'OK',
+          cssClass: 'alert-button-confirm'
+        }
+       ]
     });
     await alert.present();
   }
