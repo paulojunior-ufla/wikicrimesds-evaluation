@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RangeValue } from '@ionic/core';
 import { AlertController, RangeCustomEvent } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { DataService, Data } from '../services/data.service';
 
 @Component({
@@ -9,7 +8,8 @@ import { DataService, Data } from '../services/data.service';
   templateUrl: './rr.page.html',
   styleUrls: ['./rr.page.scss'],
 })
-export class RrPage implements OnInit {
+
+export class RrPage {
   monthValue: RangeValue;
   monthName: string = "Janeiro";
   month: number = 1;
@@ -25,7 +25,6 @@ export class RrPage implements OnInit {
   ]
 
   constructor(
-    private router: Router,
     private dataService: DataService,
     private alertController: AlertController
   ) { }
@@ -34,35 +33,13 @@ export class RrPage implements OnInit {
     this.monthValue = (ev as RangeCustomEvent).detail.value;
     this.month = parseInt(this.monthValue.toString());
     this.getMap(this.year);
-
-    if(this.monthValue == 1){
-      this.monthName= "Janeiro";
-    }else if(this.monthValue == 2){
-      this.monthName = "Fevereiro";
-    }else if(this.monthValue == 3){
-      this.monthName = "Março";
-    }else if(this.monthValue == 4){
-      this.monthName = "Abril";
-    }else if(this.monthValue == 5){
-      this.monthName = "Maio";
-    }else if(this.monthValue == 6){
-      this.monthName = "Junho";
-    }else if(this.monthValue == 7){
-      this.monthName = "Julho";
-    }else if(this.monthValue == 8){
-      this.monthName = "Agosto";
-    }else if(this.monthValue == 9){
-      this.monthName = "Setembro";
-    }else if(this.monthValue == 10){
-      this.monthName = "Outubro";
-    }else if(this.monthValue == 11){
-      this.monthName = "Novembro";
-    }else if(this.monthValue == 12){
-      this.monthName = "Dezembro";
-    }
+    this.getMonthName(this.monthValue);
   }
 
-  ngOnInit() {
+  async getArrayData(year){
+    this.dataService.getData(year).subscribe(res => {
+      this.arrayData = res;
+    }); 
   }
 
   getMap(year){
@@ -71,18 +48,32 @@ export class RrPage implements OnInit {
     this.legendImage = "rr/"+ this.year + "/" + "legend.png";
   }
 
-  backMonth(){
-    console.log(this.month);
-  }
-
-  nextMoth(){
-    console.log(this.month);
-  }
-
-  async getArrayData(year){
-    this.dataService.getData(year).subscribe(res => {
-      this.arrayData = res;
-    }); 
+  getMonthName(monthValue){
+    if(monthValue == 1){
+      this.monthName= "Janeiro";
+    }else if(monthValue == 2){
+      this.monthName = "Fevereiro";
+    }else if(monthValue == 3){
+      this.monthName = "Março";
+    }else if(monthValue == 4){
+      this.monthName = "Abril";
+    }else if(monthValue == 5){
+      this.monthName = "Maio";
+    }else if(monthValue == 6){
+      this.monthName = "Junho";
+    }else if(monthValue == 7){
+      this.monthName = "Julho";
+    }else if(monthValue == 8){
+      this.monthName = "Agosto";
+    }else if(monthValue == 9){
+      this.monthName = "Setembro";
+    }else if(monthValue == 10){
+      this.monthName = "Outubro";
+    }else if(monthValue == 11){
+      this.monthName = "Novembro";
+    }else if(monthValue == 12){
+      this.monthName = "Dezembro";
+    }
   }
 
   getData(n){
@@ -97,6 +88,26 @@ export class RrPage implements OnInit {
         this.showAlert(header, msg)
       }
     }
+  }
+
+  previous(){
+    if(this.month == 1){
+      this.month = 12
+    } else{
+      this.month -= 1
+    }
+    this.getMap(this.year);
+    this.getMonthName(this.month);
+  }
+
+  next(){
+    if(this.month == 12){
+      this.month = 1
+    } else{
+      this.month += 1
+    }
+    this.getMap(this.year);
+    this.getMonthName(this.month);
   }
 
   async showAlert(header, message) {

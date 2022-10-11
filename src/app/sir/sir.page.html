@@ -100,14 +100,14 @@
     <table id="range" *ngIf="year > 0">
         <tr>
             <td id="arrow">
-                <ion-icon name="caret-back-outline"></ion-icon>
+                <ion-icon name="caret-back-outline" (click)="previous()"></ion-icon>
             </td>
             <td>
-                <ion-range [ticks]="true" [snaps]="true" [min]="1" [max]="12" (ionKnobMoveEnd)="getMonthValue($event)" [(ngModel)]="mounth"></ion-range>
+                <ion-range [ticks]="true" [snaps]="true" [min]="1" [max]="12" (ionKnobMoveEnd)="getMonthValue($event)" [(ngModel)]="month"></ion-range>
                 <ion-label> {{ monthName }}</ion-label>
             </td>
             <td id="arrow">
-                <ion-icon name="caret-forward-outline"></ion-icon>
+                <ion-icon name="caret-forward-outline" (click)="next()"></ion-icon>
             </td>
         </tr>
     </table>
