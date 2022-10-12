@@ -1,1 +1,1 @@
-# Frontend do aplicativo WikiCrimesDS.
+Frontend do aplicativo WikiCrimesDS.
