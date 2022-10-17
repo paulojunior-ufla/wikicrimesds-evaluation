@@ -36,7 +36,7 @@ table {
 ion-tab-button {
     --color: var(--ion-color-medium);
     --color-selected: var(--ion-color-secondary);
-  
+
     &::before {
       background-color: transparent;
       display: block;
@@ -46,4 +46,6 @@ ion-tab-button {
       height: 2px;
     }
 }
-  
+ion-tab-button.tab-selected{ 
+    border-bottom: 5px solid var(--ion-color-secondary);
+}
