@@ -6,8 +6,10 @@
   right: 0;
   top: 70%;
   transform: translateY(-50%);
-  font-size: 20px;
+  font-size: 23px;
   line-height: 26px;
+  color:rgb(255, 255, 255);
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 #buttonStart {
@@ -20,18 +22,19 @@
   text-align: center;
   align-items: center;
   margin-top: 2%;
-  font-size: 45px;
+  font-size: 50px;
   font-weight: bold;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-style: italic;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 ion-content {
-  //--background: url('../../assets/fundo.jpg') no-repeat center center / cover;
-  --background: var(--ion-color-tertiary)
+  --background: url('../../assets/fundo.jpg') no-repeat center center / cover;
+  //--background: var(--ion-color-tertiary)
 }
 
 #logo{
   text-align:center;
-  margin-top: 60px;
+  margin-top: 80px;
   align-items: center;
 }
