@@ -21,15 +21,16 @@ export class ViewPage implements OnInit {
 
   
   async help(){
-    await this.showAlert("Descricao da ajuda");
+    await this.showAlert("Ajuda", "Para visualizar os dados de um AISP selecione um tipo (RR ou SIR), o ano e clique sobre o pin que está na região desejada.");
   }
 
   goToHome(){
     this.router.navigateByUrl('/home', { replaceUrl: true });
   }
 
-  async showAlert(message) {
+  async showAlert(header, message) {
     const alert = await this.alertController.create({
+      header,
       message,
       buttons: ['OK'],
     });
