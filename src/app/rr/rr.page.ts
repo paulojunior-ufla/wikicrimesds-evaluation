@@ -23,6 +23,7 @@ export class RrPage {
     "Toledo", "Campo Mourão", "Umuarama", "Paranavaí", "Maringá", "Apucarana", "Rolândia", "Londrina", 
     "Cornélio Procópio", "Telêmaco Borba","Jacarezinho"
   ]
+  showRegions: any;
 
   constructor(
     private dataService: DataService,
@@ -108,6 +109,14 @@ export class RrPage {
     }
     this.getMap(this.year);
     this.getMonthName(this.month);
+  }
+
+  showRegionsImage(){
+    if(this.showRegions == true){
+      this.imageName = "mapa.png";
+    }else{
+      this.imageName = "sir/"+ this.year + "/" + this.month +"-"+ this.year+".png";
+    }
   }
 
   async showAlert(header, message) {

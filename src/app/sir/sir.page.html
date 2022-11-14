@@ -2,25 +2,39 @@
 </ion-header>
 
 <ion-content>
-<br>
-<ion-list>
-    <ion-item>
-        <ion-label>Ano: </ion-label>
-        <ion-select placeholder="" [(ngModel)]="year" (ionChange)="getMap(year); getArrayData(year)">
-          <ion-select-option>2012</ion-select-option>
-          <ion-select-option>2013</ion-select-option>
-          <ion-select-option>2014</ion-select-option>
-          <ion-select-option>2015</ion-select-option>
-          <ion-select-option>2016</ion-select-option>
-          <ion-select-option>2017</ion-select-option>
-          <ion-select-option>2018</ion-select-option>
-          <ion-select-option>2019</ion-select-option>
-        </ion-select>
-    </ion-item>
-    <br><br>
-</ion-list>
+    <br>
+    <ion-list>
+        <ion-item>
+            <ion-label>Ano: </ion-label>
+            <ion-select placeholder="" [(ngModel)]="year" (ionChange)="getMap(year); getArrayData(year)">
+            <ion-select-option>2012</ion-select-option>
+            <ion-select-option>2013</ion-select-option>
+            <ion-select-option>2014</ion-select-option>
+            <ion-select-option>2015</ion-select-option>
+            <ion-select-option>2016</ion-select-option>
+            <ion-select-option>2017</ion-select-option>
+            <ion-select-option>2018</ion-select-option>
+            <ion-select-option>2019</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <br><br>
+    </ion-list>
 
-<h5 *ngIf="year == ''" style="text-align: center">Selecione um ano</h5>
+    <h5 *ngIf="year == ''" style="text-align: center">Selecione um ano</h5>
+
+    <ion-list *ngIf="year > 0">
+        <table style="width: 100%;">
+            <tr>
+                <td>
+                    <ion-item lines="none">
+                    <ion-label>Mostrar regiões:</ion-label>
+                    <ion-toggle [(ngModel)]="showRegions" (ionChange)="showRegionsImage()" slot="end" size="small"></ion-toggle>
+                    </ion-item>
+                </td>
+            </tr>
+        </table>
+    </ion-list>
+    <br><br>
 
     <table>
         <tr>
@@ -96,7 +110,8 @@
             </td>
         </tr>
     </table>
-
+    <br>
+            
     <table id="range" *ngIf="year > 0">
         <tr>
             <td id="arrow">
