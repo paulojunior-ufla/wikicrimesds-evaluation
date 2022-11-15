@@ -27,7 +27,7 @@
             <tr>
                 <td>
                     <ion-item lines="none">
-                    <ion-label>Mostrar regiões:</ion-label>
+                    <ion-label>Mostrar áreas:</ion-label>
                     <ion-toggle [(ngModel)]="showRegions" (ionChange)="showRegionsImage()" slot="end" size="small"></ion-toggle>
                     </ion-item>
                 </td>
@@ -39,8 +39,15 @@
     <table>
         <tr>
             <td>
-                <div id="map" style="background-image: url('assets/{{imageName}}')">
-                    <table *ngIf="year > 0" id="table_pins">
+                <ion-img style="visibility: hidden; width: 1px;" src='assets/{{imageName}}' (ionImgDidLoad)="imgWillLoad()"></ion-img>
+                
+                <div *ngIf="imgLoad == false && year > 0" style="width: 400px; padding-bottom: 104px; background-color: white; align-items: center; text-align:center"> 
+                    <br><br><br><br>
+                    <ion-spinner name="circular"></ion-spinner>
+                </div>
+
+                <div *ngIf="imgLoad == true && year > 0" id="map" style="background-image: url('assets/{{imageName}}')">
+                    <table id="table_pins">
                         <tr>
                             <td> </td>
                             <td> </td>

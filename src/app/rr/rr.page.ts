@@ -24,6 +24,7 @@ export class RrPage {
     "Cornélio Procópio", "Telêmaco Borba","Jacarezinho"
   ]
   showRegions: any;
+  imgLoad: boolean = false;
 
   constructor(
     private dataService: DataService,
@@ -44,6 +45,7 @@ export class RrPage {
   }
 
   getMap(year){
+    this.imgLoad = false;
     this.year = year;
     this.imageName = "rr/"+ this.year + "/" + this.month +"-"+ year+".png";
     this.legendImage = "rr/"+ this.year + "/" + "legend.png";
@@ -117,6 +119,10 @@ export class RrPage {
     }else{
       this.imageName = "sir/"+ this.year + "/" + this.month +"-"+ this.year+".png";
     }
+  }
+
+  imgWillLoad(){
+    this.imgLoad = true;
   }
 
   async showAlert(header, message) {
