@@ -21,7 +21,9 @@ export class ViewPage implements OnInit {
 
   
   async help(){
-    await this.showAlert("Ajuda", "Para visualizar os dados de um AISP selecione um tipo (RR ou SIR), o ano e clique sobre o pin que está na região desejada.");
+    await this.showAlert(
+      "Help", "To view the data of an IAPS select one "+
+      "type (RR or SIR), the year and click on the pin that is in the desired region.")
   }
 
   goToHome(){

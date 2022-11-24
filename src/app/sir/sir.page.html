@@ -5,7 +5,7 @@
     <br>
     <ion-list>
         <ion-item>
-            <ion-label>Ano: </ion-label>
+            <ion-label>Year: </ion-label>
             <ion-select placeholder="" [(ngModel)]="year" (ionChange)="getMap(year); getArrayData(year)">
             <ion-select-option>2012</ion-select-option>
             <ion-select-option>2013</ion-select-option>
@@ -20,14 +20,14 @@
         <br><br>
     </ion-list>
 
-    <h5 *ngIf="year == ''" style="text-align: center">Selecione um ano</h5>
+    <h5 *ngIf="year == ''" style="text-align: center">Select a year</h5>
 
     <ion-list *ngIf="year > 0">
         <table style="width: 100%;">
             <tr>
                 <td>
                     <ion-item lines="none">
-                    <ion-label>Mostrar áreas:</ion-label>
+                    <ion-label>Show areas:</ion-label>
                     <ion-toggle [(ngModel)]="showRegions" (ionChange)="showRegionsImage()" slot="end" size="small"></ion-toggle>
                     </ion-item>
                 </td>

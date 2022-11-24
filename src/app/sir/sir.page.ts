@@ -11,7 +11,7 @@ import { DataService, Data } from '../services/data.service';
 
 export class SirPage {
   monthValue: RangeValue;
-  monthName: string = "Janeiro";
+  monthName: string = "January";
   month: number = 1;
   imageName = "imgStart.png";
   year: number = 0;
@@ -53,40 +53,40 @@ export class SirPage {
 
   getMonthName(monthValue){
     if(monthValue == 1){
-      this.monthName= "Janeiro";
+      this.monthName= "January";
     }else if(monthValue == 2){
-      this.monthName = "Fevereiro";
+      this.monthName = "February";
     }else if(monthValue == 3){
-      this.monthName = "Março";
+      this.monthName = "March";
     }else if(monthValue == 4){
-      this.monthName = "Abril";
+      this.monthName = "April";
     }else if(monthValue == 5){
-      this.monthName = "Maio";
+      this.monthName = "May";
     }else if(monthValue == 6){
-      this.monthName = "Junho";
+      this.monthName = "June";
     }else if(monthValue == 7){
-      this.monthName = "Julho";
+      this.monthName = "July";
     }else if(monthValue == 8){
-      this.monthName = "Agosto";
+      this.monthName = "August";
     }else if(monthValue == 9){
-      this.monthName = "Setembro";
+      this.monthName = "September";
     }else if(monthValue == 10){
-      this.monthName = "Outubro";
+      this.monthName = "October";
     }else if(monthValue == 11){
-      this.monthName = "Novembro";
+      this.monthName = "November";
     }else if(monthValue == 12){
-      this.monthName = "Dezembro";
+      this.monthName = "December";
     }
   }
 
   getData(n){
     for (let l of this.arrayData) {
       if((l.name == n) && (l.year == this.year) && (l.month  == this.month)){
-        let header =  n + "° AISP";
+        let header =  n + "° IAPS";
         let msg = this.regions[n - 1] +
-        "<br>" + " Período: "+ this.monthName + "/" + this.year + "<br>" +
+        "<br>" + " Period: "+ this.monthName + "/" + this.year + "<br>" +
        " Crimes: "+ l.crimes + "<br>" +
-        " População: "+ l.population + "<br>" +
+        " Population: "+ l.population + "<br>" +
         " SIR: "+ l.sir + "<br>";
         this.showAlert(header, msg)
       }
