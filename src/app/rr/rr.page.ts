@@ -11,7 +11,7 @@ import { DataService, Data } from '../services/data.service';
 
 export class RrPage {
   monthValue: RangeValue;
-  monthName: string = "January";
+  monthName: string = "Janeiro";
   month: number = 1;
   imageName = "imgStart.png";
   year: number = 0;
@@ -53,29 +53,29 @@ export class RrPage {
 
   getMonthName(monthValue){
     if(monthValue == 1){
-      this.monthName= "January";
+      this.monthName= "Janeiro";
     }else if(monthValue == 2){
-      this.monthName = "February";
+      this.monthName = "Fevereiro";
     }else if(monthValue == 3){
-      this.monthName = "March";
+      this.monthName = "Março";
     }else if(monthValue == 4){
-      this.monthName = "April";
+      this.monthName = "Abril";
     }else if(monthValue == 5){
-      this.monthName = "May";
+      this.monthName = "Maio";
     }else if(monthValue == 6){
-      this.monthName = "June";
+      this.monthName = "Junho";
     }else if(monthValue == 7){
-      this.monthName = "July";
+      this.monthName = "Julho";
     }else if(monthValue == 8){
-      this.monthName = "August";
+      this.monthName = "Agosto";
     }else if(monthValue == 9){
-      this.monthName = "September";
+      this.monthName = "Setembro";
     }else if(monthValue == 10){
-      this.monthName = "October";
+      this.monthName = "Outubro";
     }else if(monthValue == 11){
-      this.monthName = "November";
+      this.monthName = "Novembro";
     }else if(monthValue == 12){
-      this.monthName = "December";
+      this.monthName = "Dezembro";
     }
   }
 
@@ -84,9 +84,9 @@ export class RrPage {
       if((l.name == n) && (l.year == this.year) && (l.month  == this.month)){
         let header =  n + "° IAPS";
         let msg = this.regions[n - 1] +
-        "<br>" + " Period: "+ this.monthName + "/" + this.year + "<br>" +
+        "<br>" + " Período: "+ this.monthName + "/" + this.year + "<br>" +
        " Crimes: "+ l.crimes + "<br>" +
-        " Population: "+ l.population + "<br>" +
+        " População: "+ l.population + "<br>" +
         " RR: "+ l.rr + "<br>";
         this.showAlert(header, msg)
       }

@@ -1,32 +1,23 @@
 <ion-header>
-  <ion-toolbar color="primary">
-     <table>
-        <tr>
-          <td> 
-            <img id="logo" height="60" (click)="goToHome()" float-left src="assets/logo.png"> 
-          </td>
-          <td id="tittle">
-            WikiCrimesDS
-          </td>
-          <td> 
-            <div id="buttonHelp">
-              <ion-icon name="help-circle-outline" (click)="help()"></ion-icon> 
-            </div>
-          </td>
-        </tr>
-      </table>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content>
-    <ion-tabs> 
-      <ion-tab-bar slot="top" selected-tab="sir">
-        <ion-tab-button tab="sir">
-          <ion-label>SIR</ion-label>
-        </ion-tab-button> 
-        <ion-tab-button tab="rr">
-          <ion-label>RR</ion-label>
-        </ion-tab-button> 
-    </ion-tab-bar>
-    </ion-tabs>
-  </ion-content>
+  <ion-toolbar color="dark" >
+    <ion-item color="dark" lines="none" (click)="goToHome()">
+        <ion-img slot="start" id="logo"  src="assets/logo.png"></ion-img>
+       <ion-label>WikiCrimesDS</ion-label>
+    </ion-item>
+    
+    
 
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="top" selected-tab="sir">
+      <ion-tab-button tab="sir">
+        <ion-label>SIR</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="rr">
+        <ion-label>RR</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

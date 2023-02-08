@@ -2,135 +2,168 @@
 </ion-header>
 
 <ion-content>
-    <br>
-    <ion-list>
-        <ion-item>
-            <ion-label>Year: </ion-label>
-            <ion-select placeholder="" [(ngModel)]="year" (ionChange)="getMap(year); getArrayData(year)">
-            <ion-select-option>2012</ion-select-option>
-            <ion-select-option>2013</ion-select-option>
-            <ion-select-option>2014</ion-select-option>
-            <ion-select-option>2015</ion-select-option>
-            <ion-select-option>2016</ion-select-option>
-            <ion-select-option>2017</ion-select-option>
-            <ion-select-option>2018</ion-select-option>
-            <ion-select-option>2019</ion-select-option>
-            </ion-select>
-        </ion-item>
-        <br><br>
-    </ion-list>
-
-    <h5 *ngIf="year == ''" style="text-align: center">Select a year</h5>
-
-    <ion-list *ngIf="year > 0">
-        <table style="width: 100%;">
-            <tr>
-                <td>
-                    <ion-item lines="none">
-                    <ion-label>Show areas áreas:</ion-label>
-                    <ion-toggle [(ngModel)]="showRegions" (ionChange)="showRegionsImage()" slot="end" size="small"></ion-toggle>
+    <ion-grid>
+        <ion-row>
+            <ion-col size-lg="8" offset-lg="2">
+                <ion-list>
+                    <ion-item>
+                        <ion-label>Ano: </ion-label>
+                        <ion-select cancelText="Cancelar" placeholder="Selecione" [(ngModel)]="year" (ionChange)="getMap(year); getArrayData(year)">
+                            <ion-select-option>2012</ion-select-option>
+                            <ion-select-option>2013</ion-select-option>
+                            <ion-select-option>2014</ion-select-option>
+                            <ion-select-option>2015</ion-select-option>
+                            <ion-select-option>2016</ion-select-option>
+                            <ion-select-option>2017</ion-select-option>
+                            <ion-select-option>2018</ion-select-option>
+                            <ion-select-option>2019</ion-select-option>
+                        </ion-select>
                     </ion-item>
-                </td>
-            </tr>
-        </table>
-    </ion-list>
-    <br><br>
+                    <br><br>
+                </ion-list>
 
-    <table>
-        <tr>
-            <td>
-                <ion-img style="visibility: hidden; width: 1px;" src='assets/{{imageName}}' (ionImgDidLoad)="imgWillLoad()"></ion-img>
-                
-                <div *ngIf="imgLoad == false && year > 0" style="width: 400px; padding-bottom: 104px; background-color: white; align-items: center; text-align:center"> 
-                    <br><br><br><br>
-                    <ion-spinner name="circular"></ion-spinner>
-                </div>
-
-                <div *ngIf="imgLoad == true && year > 0" id="map" style="background-image: url('assets/{{imageName}}')"> 
-                    <table id="table_pins">
+                <ion-list *ngIf="year > 0">
+                    <table style="width: 100%;">
                         <tr>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td><ion-icon class="pin" (click)="getData(16)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                            <td> <ion-icon class="pin" (click)="getData(17)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                            <td><ion-icon class="pin" (click)="getData(19)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                        </tr>
-                        <tr>
-                            <td> </td>
-                            <td> </td>
-                            <td><ion-icon class="pin" (click)="getData(15)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                            <td> </td>
-                            <td> </td>
-                            <td><ion-icon class="pin" (click)="getData(20)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                            <td style="margin-left: 10px;"><ion-icon class="pin" (click)="getData(21)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                            <td><ion-icon class="pin" style="cursor:pointer" (click)="getData(23)" name="pin-sharp"></ion-icon></td>
-                        </tr>
-                        <tr>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td><ion-icon class="pin" (click)="getData(14)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                            <td><ion-icon class="pin" (click)="getData(18)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                            <td></td>
-                            <td><ion-icon class="pin" (click)="getData(22)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                        </tr>  
-                        <tr>
-                            <td></td>
-                            <td ><ion-icon class="pin" (click)="getData(13)" style="cursor:pointer" name="pin-sharp"></ion-icon> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> <ion-icon class="pin" (click)="getData(7)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                            <td></td>
-                            <td> </td>
-                            <td style="margin-left: 19px;"><ion-icon class="pin" (click)="getData(4)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                            <td></td>
-                            <td style="padding-top: 2px;"><ion-icon class="pin" (click)="getData(2)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                        </tr>
-                        <tr>
-                            <td><ion-icon class="pin" (click)="getData(12)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                            <td> </td>
-                            <td><ion-icon class="pin" (click)="getData(11)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                            <td><ion-icon class="pin" (click)="getData(8)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td style="padding-left: 0px; padding-top: 8px;"><ion-icon class="pin" (click)="getData(1)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                            <td style="padding-top: 0px;"><ion-icon class="pin" (click)="getData(3)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                        </tr>
-                        <tr>
-                            <td> </td>
-                            <td><ion-icon class="pin" (click)="getData(10)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                            <td> </td>
-                            <td><ion-icon class="pin" (click)="getData(9)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                            <td> </td>
-                            <td><ion-icon class="pin" (click)="getData(6)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
-                            <td> </td>
-                            <td><ion-icon class="pin" (click)="getData(5)" style="cursor:pointer" name="pin-sharp"></ion-icon></td>
+                            <td>
+                                <ion-item lines="none">
+                                    <ion-label>{{showRegions ? "Esconder áreas" : "Mostrar áreas"}}</ion-label>
+                                    <ion-toggle [(ngModel)]="showRegions" (ionChange)="showRegionsImage()" slot="end"
+                                        size="small"></ion-toggle>
+                                </ion-item>
+                            </td>
                         </tr>
                     </table>
-                </div>
-            </td>
-            <td>
-                <div *ngIf="year > 0" id="legend" style="background-image: url('assets/{{legendImage}}');"></div>
-            </td>
-        </tr>
-    </table>
-    <br>
-    
-    <table id="range" *ngIf="year > 0">
-        <tr>
-            <td id="arrow">
-                <ion-icon name="caret-back-outline" (click)="previous()"></ion-icon>
-            </td>
-            <td>
-                <ion-range [ticks]="true" [snaps]="true" [min]="1" [max]="12" (ionKnobMoveEnd)="getMonthValue($event)" [(ngModel)]="month"></ion-range>
-                <ion-label> {{ monthName }}</ion-label>
-            </td>
-            <td id="arrow">
-                <ion-icon name="caret-forward-outline" (click)="next()"></ion-icon>
-            </td>
-        </tr>
-    </table>
+                </ion-list>
+                <br><br>
+
+                <table align="center">
+                    <tr>
+                        <td>
+                            <ion-img style="visibility: hidden; width: 1px;" src='assets/{{imageName}}'
+                                (ionImgDidLoad)="imgWillLoad()"></ion-img>
+
+                            <div *ngIf="imgLoad == false && year > 0"
+                                style="width: 300px; padding-bottom: 104px; background-color: white; align-items: center; text-align:center">
+                                <br><br><br><br>
+                                <ion-spinner name="circular"></ion-spinner>
+                            </div>
+
+                            <div *ngIf="imgLoad == true && year > 0" id="map"
+                                style="background-image: url('assets/{{imageName}}')">
+                                <table id="table_pins">
+                                    <tr>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td><ion-icon class="pin" (click)="getData(16)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon></td>
+                                        <td> <ion-icon class="pin" (click)="getData(17)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon></td>
+                                        <td><ion-icon class="pin" (click)="getData(19)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon></td>
+                                    </tr>
+                                    <tr>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td><ion-icon class="pin" (click)="getData(15)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon></td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td><ion-icon class="pin" (click)="getData(20)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon></td>
+                                        <td style="margin-left: 10px;"><ion-icon class="pin" (click)="getData(21)"
+                                                style="cursor:pointer" name="pin-sharp"></ion-icon></td>
+                                        <td><ion-icon class="pin" style="cursor:pointer" (click)="getData(23)"
+                                                name="pin-sharp"></ion-icon></td>
+                                    </tr>
+                                    <tr>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td><ion-icon class="pin" (click)="getData(14)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon></td>
+                                        <td><ion-icon class="pin" (click)="getData(18)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon></td>
+                                        <td></td>
+                                        <td><ion-icon class="pin" (click)="getData(22)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><ion-icon class="pin" (click)="getData(13)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> <ion-icon class="pin" (click)="getData(7)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon></td>
+                                        <td></td>
+                                        <td> </td>
+                                        <td style="margin-left: 19px;"><ion-icon class="pin" (click)="getData(4)"
+                                                style="cursor:pointer" name="pin-sharp"></ion-icon></td>
+                                        <td></td>
+                                        <td style="padding-top: 2px;"><ion-icon class="pin" (click)="getData(2)"
+                                                style="cursor:pointer" name="pin-sharp"></ion-icon></td>
+                                    </tr>
+                                    <tr>
+                                        <td><ion-icon class="pin" (click)="getData(12)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon></td>
+                                        <td> </td>
+                                        <td><ion-icon class="pin" (click)="getData(11)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon></td>
+                                        <td><ion-icon class="pin" (click)="getData(8)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon></td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td> </td>
+                                        <td style="padding-left: 0px; padding-top: 8px;"><ion-icon class="pin"
+                                                (click)="getData(1)" style="cursor:pointer" name="pin-sharp"></ion-icon>
+                                        </td>
+                                        <td style="padding-top: 0px;"><ion-icon class="pin" (click)="getData(3)"
+                                                style="cursor:pointer" name="pin-sharp"></ion-icon></td>
+                                    </tr>
+                                    <tr>
+                                        <td> </td>
+                                        <td><ion-icon class="pin" (click)="getData(10)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon></td>
+                                        <td> </td>
+                                        <td><ion-icon class="pin" (click)="getData(9)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon></td>
+                                        <td> </td>
+                                        <td><ion-icon class="pin" (click)="getData(6)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon></td>
+                                        <td> </td>
+                                        <td><ion-icon class="pin" (click)="getData(5)" style="cursor:pointer"
+                                                name="pin-sharp"></ion-icon></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td>
+                            <div *ngIf="year > 0" id="legend" style="background-image: url('assets/{{legendImage}}');">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+
+                <table id="range" *ngIf="year > 0">
+                    <tr>
+                        <td id="arrow">
+                            <ion-icon name="caret-back-outline" (click)="previous()"></ion-icon>
+                        </td>
+                        <td>
+                            <ion-range [ticks]="true" [snaps]="true" [min]="1" [max]="12"
+                                (ionKnobMoveEnd)="getMonthValue($event)" [(ngModel)]="month"></ion-range>
+                            <ion-label> {{ monthName }}</ion-label>
+                        </td>
+                        <td id="arrow">
+                            <ion-icon name="caret-forward-outline" (click)="next()"></ion-icon>
+                        </td>
+                    </tr>
+                </table>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>

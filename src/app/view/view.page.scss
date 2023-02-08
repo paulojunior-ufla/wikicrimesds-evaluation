@@ -1,5 +1,15 @@
+ion-label {
+    font-weight: bold;
+}
+
+ion-item {
+    cursor: pointer;
+}
+
 #logo {
-    margin: 6%;
+    height: 42px;
+    width: 42px;
+    filter: invert(100%);
   }
 
 #buttonHelp {
