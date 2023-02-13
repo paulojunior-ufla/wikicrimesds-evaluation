@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { tap, map } from 'rxjs/operators';
+
 
 export interface Data{
   id?: string;
@@ -18,7 +20,7 @@ export interface Data{
 })
 export class LocalDataService {
 
-  private readonly API_URL = 'http://localhost:8080/api/';
+  private readonly LOCAL_DATA_URL = '../../assets/json/data.json';
   
   constructor(
     private httpClient: HttpClient
@@ -27,6 +29,8 @@ export class LocalDataService {
     }
 
     getData(year): Observable<Data[]> {
-      return this.httpClient.get<any>(this.API_URL+year);
+      return this.httpClient.get<any>(this.LOCAL_DATA_URL).pipe(
+        map(data => data.region_data),
+      );
     }
   }
